@@ -1,3 +1,11 @@
+
+
+
+
+
+
+
+
 # 数据挖掘实验
 
 ## 实验一：相似度、距离、最近邻分类器
@@ -95,5 +103,41 @@ function [post4all] = bys_Classify(trAttr,trLabels,tstAttr)
 function [Params,prior,AllLabels] = NaiveBayesTrain(trAttr,trLabels)
 function Paramsl = GetParams4ContiAttr(AttrVals,ind)
 function post = NaiveBayesPrdeict(Params,prior,tstAttr)	
+```
+
+## 实验四 聚类算法
+
+### 一、**实验目的**
+
+（1）理解聚类算法的基本原理。
+
+（2）掌握kmeans聚类算法的原理与实现。
+
+### **二、实验内容**
+
+数据见data.mat，编程实现K means算法代码
+
+```matlab
+测试代码如下：
+load 'data.mat';
+[u re]=K_MeansMt(data,3);  %最后产生簇标号 re 
+[m n]=size(re);
+%最后显示聚类后的数据
+figure;
+hold on;
+for i=1:m 
+    if re(i)==1   
+         plot(data(i,1),data(i,2),'ro'); 
+    elseif re(i)==2
+         plot(data(i,1),data(i,2),'go'); 
+    else 
+         plot(data(i,1),data(i,2),'bo'); 
+    end
+end
+grid on;
+```
+
+```matlab
+function [u clusterID]=K_MeansMt(data,k)
 ```
 
