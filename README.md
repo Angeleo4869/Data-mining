@@ -32,6 +32,30 @@ function sim = sim_COS(X,Y)
 
 #### （3）、实现K最近邻算法
 
+**KNN算法思想**
+
+输入参数：k值、trainingSamples（训练数据集，M*N矩阵，M为样本数，N为属性
+数）、trainingLabels（训练数据集的分类标签0、1、2...，M*1矩阵）, testingSample
+（测试数据，1*N矩阵）
+输出参数：class（测试数据对应类别标签）
+**算法流程：**
+
+1. 得到训练数据集trainingSamples的大小M，N
+
+2. 初始化Distance数组（M*1），用来存储每个训练样本与测试样本的距离。
+3. 对每一个训练样本trainingSamples(i,:)【for i=1:M】，计算其与测试样本
+   testingSample之间的距离，存储在Distance（i）中
+4. 对Distance数组排升序【sort函数】
+5. 取得排序前K个距离对应的序号，将序号对应的训练数据的分类标签得到赋给
+   labs
+6. 得到labs数组的不重复元素，存储在数组All_labs 【unique函数】
+7. 得到不重复元素（数组All_labs ）的个数LabNum
+8. （for i=1: LabNum ）对每一个不重复的分类标签All_labs(i) ，查找【find函数】
+   最近的k个类别标签labs中，等于All_labs(i)的有几个，将该数目作为第i类的投票数
+   Vote(i)
+9. 求投票数Vote(i)的最大值所在的索引ind
+10. All_labs(ind)是最大投票数对应的类别标签，即为算法输出结果class
+
 ```matlab
 function [class] = KNN_Classify_E(trainingSamples, trainingLabels, testingSample,k)
 ```
